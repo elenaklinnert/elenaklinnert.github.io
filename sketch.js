@@ -64,14 +64,15 @@ function draw() {
 }
 
 function windowResized(){
-	
-	resizeCanvas(windowWidth, windowHeight);
-
 	for(let i=0; i<numParticle; i++){
 		let p = particle[i];
-		p[i].pos.x = map(p[i].pos.x, 0, 
+		p.pos.x = map(p.pos.x, 0, lastWidth, 0, windowWidth);
+		p.pos.y = map(p.pos.y, 0, lastHeight, 0, windowHeight);
 		// particle[i].target.set((i % sqrt(numParticle) )*(windowWidth / sqrt(numParticle)) + windowWidth / sqrt(numParticle)/2, (parseInt(i/sqrt(numParticle)))*(windowHeight/sqrt(numParticle)) + windowWidth / sqrt(numParticle)/2);
 	}
+	resizeCanvas(windowWidth, windowHeight);
+
+	
 }
 
 function loadAllImages(){
