@@ -1,5 +1,5 @@
 let particle = [];
-let numParticle = 1200;
+let numParticle = 800;
 var images = [];
 let bgAlpha;
 let lastWidth, lastHeight;
@@ -110,9 +110,5 @@ function addParticle(){
 	}
 
 	let ttPos = createVector(pX, pY);
-	particle.push(new Particle( 
-		ttPos,
-		parseInt(random(15))
-		)
-		);
+	particle.push(new Particle(ttPos, parseInt(random(15))));
 }
