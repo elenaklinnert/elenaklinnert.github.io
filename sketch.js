@@ -54,7 +54,7 @@ function draw() {
 	}
 	
 	fill(0);
-	text("frameRate : " + String(int(frameRate())) + "\nnum of images : " + String(particle.length), 20, 20);
+	// text("frameRate : " + String(int(frameRate())) + "\nnum of images : " + String(particle.length), 20, 20);
 	
 	if(particle.length < numParticle){
 		addParticle();
