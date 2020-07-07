@@ -8,6 +8,7 @@ class SolarSystem{
         this.distance = _r;
         this.angle = random(0, 60);
         this.scaleFactor = 1;
+        this.targetScaleFactor = 1;
 
         // console.log("SS" + _ID + "-" + _n + ":");
         
@@ -53,6 +54,8 @@ class SolarSystem{
             this.positions[i].x = pX;
             this.positions[i].y = pY;
         }
+
+        this.scaleFactor += (this.targetScaleFactor - this.scaleFactor) * 0.1;
     }
 
     run(){
@@ -68,9 +71,9 @@ class SolarSystem{
             mouseY < this.maxY &&
             mouseY > this.minY
             ) {
-            this.scaleFactor = constrain(map(dist(mouseX, mouseY, width/2, marginHeight + (this.ID-1)*margin), 150, 0, 0.7, 1.5), 0.7, 1.5);
+            this.targetScaleFactor = constrain(map(dist(mouseX, mouseY, width/2, marginHeight + (this.ID-1)*margin), 150, 0, 1, 1.7), 1, 1.7);
         } else {
-            this.scaleFactor = 1;
+            this.targetScaleFactor= 1;
         }
     }
     
