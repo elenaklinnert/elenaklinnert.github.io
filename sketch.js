@@ -7,7 +7,7 @@ let lastWidth, lastHeight;
 
 function preload(){
 	for(var i=0; i<numD; i++){
-		var fileName = "images/"
+		var fileName = "images/p1/"
 		if (i+1<10) {
 			fileName += "d0" + (i+1) + ".png";
 		} else {
@@ -79,7 +79,7 @@ function windowResized(){
 function loadAllImages(){
 	for(var i=0; i<numD; i++){
 		var img;
-		var fileName = "./images/"
+		var fileName = "./images/p1/"
 		if (i<10) {
 			fileName + "d0" + i + ".png";
 		} else {
