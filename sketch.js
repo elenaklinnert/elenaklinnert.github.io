@@ -113,3 +113,7 @@ function addParticle(){
 	let ttPos = createVector(pX, pY);
 	particle.push(new Particle(ttPos, parseInt(random(numD))));
 }
+
+function mouseClicked(){
+	window.open('./page2.html');
+}
