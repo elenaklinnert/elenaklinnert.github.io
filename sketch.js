@@ -115,5 +115,5 @@ function addParticle(){
 }
 
 function mouseClicked(){
-	window.open('./page2.html');
+	window.open('./page2.html', "_self");
 }
