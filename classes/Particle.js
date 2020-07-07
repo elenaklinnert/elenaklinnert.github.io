@@ -11,6 +11,19 @@ class Particle{
         this.angle = 0;
         this.angleVel = radians(random(0, 1));
         this.isActivated = false;
+        
+        let tmp = random(1);
+        this.minForce;
+        this.maxForce;
+        
+        if(tmp < 0.5)   {
+            this.minForce = 50;
+            this.maxForce = 400;
+        } else {
+            this.minForce = 100;
+            this.maxForce = 1000;
+        }
+
 	}
 
 	update(){
@@ -55,13 +68,13 @@ class Particle{
         // this.angle = force.heading()+radians(-90);
         var d = force.mag();
         
-        d = constrain(d, 25, 1000);
-        var G = 1;
+        d = constrain(d, this.minForce, this.maxForce);
+        var G = 2;
         var strength = G /  d ;
         force.setMag(strength);
 
         if(d < 150) {
-            force.mult(-8);
+            force.mult(-6);
             this.isActivated = true;
         }
 

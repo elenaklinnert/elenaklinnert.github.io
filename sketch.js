@@ -1,16 +1,17 @@
 let particle = [];
-let numParticle = 800;
+let numParticle = 1200;
+let numD = 8;
 var images = [];
 let bgAlpha;
 let lastWidth, lastHeight;
 
 function preload(){
-	for(var i=0; i<15; i++){
+	for(var i=0; i<numD; i++){
 		var fileName = "images/"
 		if (i+1<10) {
-			fileName += "0" + (i+1) + ".png";
+			fileName += "d0" + (i+1) + ".png";
 		} else {
-			fileName += (i+1) + ".png";
+			fileName += "d"+ (i+1) + ".png";
 		}
 		// console.log(fileName);
 		images[i] = loadImage(fileName);
@@ -24,11 +25,11 @@ function setup() {
 	canvas.parent('backgroundDiv');
 	imageMode(CENTER);
 	// put setup code here
-	for(let i=0; i<numParticle; i++){
+	for(let i=0; i<200; i++){
 		let tPos = createVector(random(-400, windowWidth+400), random(-400, windowHeight+400));
 		particle.push(new Particle( 
 							tPos,
-							parseInt(random(15))
+							parseInt(random(numD))
 							)
 							);
 	}
@@ -76,13 +77,13 @@ function windowResized(){
 }
 
 function loadAllImages(){
-	for(var i=0; i<16; i++){
+	for(var i=0; i<numD; i++){
 		var img;
 		var fileName = "./images/"
 		if (i<10) {
-			fileName + "0" + i + ".png";
+			fileName + "d0" + i + ".png";
 		} else {
-			fileName + i + ".png";
+			fileName +"d" + i + ".png";
 		}
 		
 		img.loadImage(fileName);
@@ -110,5 +111,5 @@ function addParticle(){
 	}
 
 	let ttPos = createVector(pX, pY);
-	particle.push(new Particle(ttPos, parseInt(random(15))));
+	particle.push(new Particle(ttPos, parseInt(random(numD))));
 }
