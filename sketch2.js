@@ -67,7 +67,7 @@ function mouseClicked(){
 	for(let i=0; i<numLink; i++){
 		imageGroup[i].checkMouseClicked();
 	}
-	if(dist(mouseX, mouseY, width/2, marginHeight+8*margin) < 50){
+	if(dist(mouseX, mouseY, width/2, marginHeight+8*margin) < 80){
 		window.open("index.html", "_self")
 	}
 }
