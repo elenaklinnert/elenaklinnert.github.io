@@ -4,6 +4,8 @@ let numD = 8;
 var images = [];
 let bgAlpha;
 let lastWidth, lastHeight;
+let timer;
+let generateDandelionInterval = 10;
 
 function preload(){
 	for(var i=0; i<numD; i++){
@@ -33,6 +35,8 @@ function setup() {
 							)
 							);
 	}
+
+	timer = millis();
 }
 
 function draw() {
@@ -56,8 +60,9 @@ function draw() {
 	fill(0);
 	// text("frameRate : " + String(int(frameRate())) + "\nnum of images : " + String(particle.length), 20, 20);
 	
-	if(particle.length < numParticle){
+	if(particle.length < numParticle && millis() - timer > generateDandelionInterval){
 		addParticle();
+		timer = millis();
 	}
 
 	lastWidth = windowWidth;

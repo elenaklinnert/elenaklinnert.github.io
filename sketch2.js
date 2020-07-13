@@ -1,21 +1,21 @@
 let numLink = 7;
 
-let numberOfImagesPerSolarSystem = [5, 9, 4, 6, 5, 3, 3];
-let radiusOfEachSolarSystem = [100, 150, 80, 120, 100, 60, 60];
+let numberOfImagesPerSolarSystem = [28, 30, 28, 13, 14, 8, 19];
+// let radiusOfEachSolarSystem = [100, 150, 80, 120, 100, 60, 60];
 let imageGroup = [];
 let margin;
 let backLinkImage;
 
-let marginHeight = 150;	// margin, for center of 7 solarsistem
+let marginHeight;	// margin, for center of 7 solarsistem
 
-let imageScale = 0.5;
+let imageScale =1;
 
 let currentScale = 0.6;
-let targetScale = 0.8;
+let targetScale = 1;
 
 function preload(){
 	for(let i=0; i<numLink; i++){
-		imageGroup.push(new SolarSystem((i+1),numberOfImagesPerSolarSystem[i], radiusOfEachSolarSystem[i]));
+		imageGroup.push(new SolarSystem((i+1),numberOfImagesPerSolarSystem[i]));
 	}
 	backLinkImage = loadImage("images/p2/04/06.png");
 	bgAlpha = 255;
@@ -26,12 +26,20 @@ function setup() {
 	canvas.parent('backgroundDiv');
 	
 	imageMode(CENTER);
+
+	marginHeight = windowHeight/8;
 }
 
 function draw() {
 	background(255);
 
-	margin = (windowHeight - 2*marginHeight) / (numLink);
+	if(windowWidth < 600){
+		imageScale = 0.5;
+	} else {
+		imageScale = 1;
+	}
+
+	margin = (windowHeight - 2*marginHeight) / (numLink+1);
 
 	for(let i=0; i<numLink; i++){
 		imageGroup[i].run();
@@ -41,7 +49,7 @@ function draw() {
 
 	push();
 	imageMode(CENTER);
-	translate(width/2, marginHeight+ 7.5*margin);
+	translate(width/2, marginHeight+ 8*margin);
 	rotate(radians(millis()/10));
 	scale(currentScale);
 	image(backLinkImage, 0, 0);
