@@ -6,6 +6,8 @@ let bgAlpha;
 let lastWidth, lastHeight;
 let timer;
 let generateDandelionInterval = 10;
+let scaleFactor = 1;
+let tMouseX, tMouseY;
 
 function preload(){
 	for(var i=0; i<numD; i++){
@@ -37,6 +39,9 @@ function setup() {
 	}
 
 	timer = millis();
+
+	tMouseX = width/2;
+	tMouseY = height/2;
 }
 
 function draw() {
@@ -67,6 +72,12 @@ function draw() {
 
 	lastWidth = windowWidth;
 	lastHeight = windowHeight;
+
+	if(windowWidth < 600){
+		scaleFactor = 0.5;
+	} else {
+		scaleFactor = 1;
+	}
 }
 
 function windowResized(){
@@ -121,4 +132,9 @@ function addParticle(){
 
 function mouseClicked(){
 	window.open('./page2.html', "_self");
+}
+
+function mouseMoved(){
+	tMouseX = mouseX;
+	tMouseY = mouseY;
 }

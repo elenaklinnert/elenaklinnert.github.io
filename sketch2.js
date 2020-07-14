@@ -27,7 +27,7 @@ function setup() {
 	
 	imageMode(CENTER);
 
-	marginHeight = windowHeight/8;
+	
 }
 
 function draw() {
@@ -54,6 +54,8 @@ function draw() {
 	scale(currentScale);
 	image(backLinkImage, 0, 0);
 	pop();
+
+	marginHeight = windowHeight/8;
 }
 
 function windowResized(){
