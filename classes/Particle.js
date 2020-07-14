@@ -53,8 +53,10 @@ class Particle{
 
     draw(){        
         push();
+        imageMode(CENTER);
         translate(this.pos.x, this.pos.y);
         rotate(this.angle);
+        scale(scaleFactor);
         // tint(255, this.life);
         image(images[this.img], 0, 0);
         pop();
@@ -63,17 +65,17 @@ class Particle{
     }
     
     attracted(){
-        var mV = createVector(mouseX, mouseY);
+        var mV = createVector(tMouseX, tMouseY);
         var force = p5.Vector.sub(mV, this.pos);
         // this.angle = force.heading()+radians(-90);
         var d = force.mag();
         
         d = constrain(d, this.minForce, this.maxForce);
-        var G = 2;
-        var strength = G /  d ;
+        var G = 1.2;
+        var strength = G /d /2  ;
         force.setMag(strength);
 
-        if(d < 150) {
+        if(d < height/5) {
             force.mult(-6);
             this.isActivated = true;
         }
