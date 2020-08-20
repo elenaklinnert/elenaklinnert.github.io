@@ -1,5 +1,5 @@
 let particle = [];
-let numParticle = 1200;
+let numParticle = 800;
 let numD = 8;
 var images = [];
 let bgAlpha;
@@ -9,7 +9,10 @@ let generateDandelionInterval = 10;
 let scaleFactor = 1;
 let tMouseX, tMouseY;
 
+let butterfly;
+
 function preload(){
+	
 	for(var i=0; i<numD; i++){
 		var fileName = "images/p1/"
 		if (i+1<10) {
@@ -26,26 +29,37 @@ function preload(){
 }
 function setup() {
 	let canvas = createCanvas(windowWidth, windowHeight);
+
+	butterfly = new Butterfly(createVector(
+		random(200, windowWidth-200),
+		random(200, windowHeight-200)
+		));
+
 	canvas.parent('backgroundDiv');
 	imageMode(CENTER);
+
 	// put setup code here
 	for(let i=0; i<200; i++){
 		let tPos = createVector(random(-400, windowWidth+400), random(-400, windowHeight+400));
 		particle.push(new Particle( 
 							tPos,
 							parseInt(random(numD))
-							)
-							);
+					));
 	}
 
 	timer = millis();
 
 	tMouseX = width/2;
 	tMouseY = height/2;
+
+	
 }
 
 function draw() {
 	background(255);
+
+	butterfly.update();
+	butterfly.draw();
 	
 	for(let i=particle.length-1; i>=0; i--){
 		let p = particle[i];
@@ -70,26 +84,32 @@ function draw() {
 		timer = millis();
 	}
 
-	lastWidth = windowWidth;
-	lastHeight = windowHeight;
-
+	
 	if(windowWidth < 600){
 		scaleFactor = 0.5;
 	} else {
 		scaleFactor = 1;
 	}
+
+
+
+	lastWidth = windowWidth;
+	lastHeight = windowHeight;
+
+
 }
 
 function windowResized(){
 	for(let i=0; i<numParticle; i++){
-		let p = particle[i];
-		p.pos.x = map(p.pos.x, 0, lastWidth, 0, windowWidth);
-		p.pos.y = map(p.pos.y, 0, lastHeight, 0, windowHeight);
-		// particle[i].target.set((i % sqrt(numParticle) )*(windowWidth / sqrt(numParticle)) + windowWidth / sqrt(numParticle)/2, (parseInt(i/sqrt(numParticle)))*(windowHeight/sqrt(numParticle)) + windowWidth / sqrt(numParticle)/2);
+		// const p = particle[i];
+		particle[i].pos.x = map(particle[i].pos.x, 0, lastWidth,  0, windowWidth);
+		particle[i].pos.y = map(particle[i].pos.y, 0, lastHeight, 0, windowHeight);
 	}
-	resizeCanvas(windowWidth, windowHeight);
+	butterfly.pos.x = map(butterfly.pos.x, 0, lastWidth, 0, windowWidth);
+	butterfly.pos.y = map(butterfly.pos.y, 0, lastHeight, 0, windowHeight);
 
-	
+	// butterfly.updateBFTarget();
+	resizeCanvas(windowWidth, windowHeight);
 }
 
 function loadAllImages(){
@@ -99,7 +119,7 @@ function loadAllImages(){
 		if (i<10) {
 			fileName + "d0" + i + ".png";
 		} else {
-			fileName +"d" + i + ".png";
+			fileName + "d" + i + ".png";
 		}
 		
 		img.loadImage(fileName);
@@ -107,7 +127,6 @@ function loadAllImages(){
 	}
 	return images;
 }
-
 
 function addParticle(){
 	let pX, pY;
