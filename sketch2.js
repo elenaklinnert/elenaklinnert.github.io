@@ -17,7 +17,7 @@ function preload(){
 	for(let i=0; i<numLink; i++){
 		imageGroup.push(new SolarSystem((i+1),numberOfImagesPerSolarSystem[i]));
 	}
-	backLinkImage = loadImage("images/p2/04/06.png");
+	backLinkImage = loadImage("images/feather.png");
 	bgAlpha = 255;
 }
 
