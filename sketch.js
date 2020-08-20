@@ -159,6 +159,10 @@ function mouseClicked(){
 	window.open('./page2.html', "_self");
 }
 
+function touchEnded(){
+	window.open('./page2.html', "_self");
+}
+
 function mouseMoved(){
 	tMouseX = mouseX;
 	tMouseY = mouseY;
