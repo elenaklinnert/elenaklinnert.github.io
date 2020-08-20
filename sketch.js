@@ -1,5 +1,5 @@
 let particle = [];
-let numParticle = 800;
+let numParticle = 200;
 let numD = 8;
 var images = [];
 let bgAlpha;
@@ -100,15 +100,21 @@ function draw() {
 }
 
 function windowResized(){
-	for(let i=0; i<numParticle; i++){
+	// for(let i=0; i<numParticle.length; i++){
+	for(const p of particle){
 		// const p = particle[i];
-		particle[i].pos.x = map(particle[i].pos.x, 0, lastWidth,  0, windowWidth);
-		particle[i].pos.y = map(particle[i].pos.y, 0, lastHeight, 0, windowHeight);
+		p.pos.x = map(p.pos.x, 0, lastWidth,  0, windowWidth);
+		p.pos.y = map(p.pos.y, 0, lastHeight, 0, windowHeight);
 	}
-	butterfly.pos.x = map(butterfly.pos.x, 0, lastWidth, 0, windowWidth);
-	butterfly.pos.y = map(butterfly.pos.y, 0, lastHeight, 0, windowHeight);
+	// butterfly.pos.x = map(butterfly.pos.x, 0, lastWidth, 0, windowWidth);
+	// butterfly.pos.y = map(butterfly.pos.y, 0, lastHeight, 0, windowHeight);
 
 	// butterfly.updateBFTarget();
+
+	//update target position as resize window area
+	butterfly.targetPos.x = map(butterfly.targetPos.x, 0, lastWidth, 0, windowWidth);
+	butterfly.targetPos.y = map(butterfly.targetPos.y, 0, lastHeight, 0, windowHeight);
+	
 	resizeCanvas(windowWidth, windowHeight);
 }
 
