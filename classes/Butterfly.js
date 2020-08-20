@@ -85,9 +85,9 @@ class Butterfly{
         translate(this.pos.x, this.pos.y);
         // push();
         if(this.vel.x > 0){
-            scale(-1, 1);
+            scale(-1 * scaleFactor, 1 * scaleFactor);
         } else {
-            scale(1, 1);
+            scale(1 * scaleFactor, 1 * scaleFactor);
         }
         image(this.animationFrames[this.frameNo], 0, 0);
         // pop();
