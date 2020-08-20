@@ -1,5 +1,5 @@
 let particle = [];
-let numParticle = 200;
+let numParticle = 1000;
 let numD = 8;
 var images = [];
 let bgAlpha;
