@@ -30,11 +30,6 @@ function preload(){
 function setup() {
 	let canvas = createCanvas(windowWidth, windowHeight);
 
-	butterfly = new Butterfly(createVector(
-		random(200, windowWidth-200),
-		random(200, windowHeight-200)
-		));
-
 	canvas.parent('backgroundDiv');
 	imageMode(CENTER);
 
@@ -58,8 +53,6 @@ function setup() {
 function draw() {
 	background(255);
 
-	butterfly.update();
-	butterfly.draw();
 	
 	for(let i=particle.length-1; i>=0; i--){
 		let p = particle[i];
@@ -106,14 +99,7 @@ function windowResized(){
 		p.pos.x = map(p.pos.x, 0, lastWidth,  0, windowWidth);
 		p.pos.y = map(p.pos.y, 0, lastHeight, 0, windowHeight);
 	}
-	// butterfly.pos.x = map(butterfly.pos.x, 0, lastWidth, 0, windowWidth);
-	// butterfly.pos.y = map(butterfly.pos.y, 0, lastHeight, 0, windowHeight);
 
-	// butterfly.updateBFTarget();
-
-	//update target position as resize window area
-	butterfly.targetPos.x = map(butterfly.targetPos.x, 0, lastWidth, 0, windowWidth);
-	butterfly.targetPos.y = map(butterfly.targetPos.y, 0, lastHeight, 0, windowHeight);
 	
 	resizeCanvas(windowWidth, windowHeight);
 }
