@@ -71,8 +71,8 @@ class Particle{
         var d = force.mag();
         
         d = constrain(d, this.minForce, this.maxForce);
-        var G = 1.2;
-        var strength = G /d /2  ;
+        var G = 0.8;
+        var strength = G /d /4  ;
         force.setMag(strength);
 
         if(d < height/5) {
