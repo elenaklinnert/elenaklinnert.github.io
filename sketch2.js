@@ -39,7 +39,7 @@ function draw() {
 		imageScale = 1;
 	}
 
-	margin = (windowHeight - 2*marginHeight) / (numLink+1);
+	margin = (windowHeight - 1.5*marginHeight) / (numLink+1);
 
 	for(let i=0; i<numLink; i++){
 		imageGroup[i].run();
