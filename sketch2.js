@@ -1,6 +1,6 @@
 let numLink = 7;
 
-let numberOfImagesPerSolarSystem = [28, 30, 28, 13, 14, 8, 19];
+let numberOfImagesPerSolarSystem = [5, 9, 4, 6, 5, 3, 3];
 // let radiusOfEachSolarSystem = [100, 150, 80, 120, 100, 60, 60];
 let imageGroup = [];
 let margin;
@@ -17,7 +17,7 @@ function preload(){
 	for(let i=0; i<numLink; i++){
 		imageGroup.push(new SolarSystem((i+1),numberOfImagesPerSolarSystem[i]));
 	}
-	backLinkImage = loadImage("images/feather.png");
+	backLinkImage = loadImage("images/d.png");
 	bgAlpha = 255;
 }
 
@@ -55,7 +55,7 @@ function draw() {
 	image(backLinkImage, 0, 0);
 	pop();
 
-	marginHeight = windowHeight/8;
+	marginHeight = windowHeight/10;
 }
 
 function windowResized(){
