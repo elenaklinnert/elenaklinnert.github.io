@@ -64,9 +64,9 @@ function windowResized(){
 
 function checkBackLinkImage(){
 	if( dist(mouseX, mouseY, width/2, marginHeight+7.5*margin) < 50){
-		targetScale = 0.8;
+		targetScale = 0.9;
 	} else {
-		targetScale = 0.6;
+		targetScale = 0.8;
 	}
 
 	currentScale += (targetScale - currentScale)*0.1;
