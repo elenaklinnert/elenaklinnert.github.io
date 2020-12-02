@@ -1,6 +1,6 @@
 let numLink = 7;
 
-let numberOfImagesPerSolarSystem = [5, 11, 9, 6, 6, 8, 7];
+let numberOfImagesPerSolarSystem = [11, 11, 12, 6, 6, 9, 15];
 // let radiusOfEachSolarSystem = [100, 150, 80, 120, 100, 60, 60];
 let imageGroup = [];
 let margin;
