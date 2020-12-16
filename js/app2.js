@@ -73,7 +73,7 @@ function checkBackLinkImage(){
 }
 
 
-function mouseClicked(){
+function touchEnded(){
 	for(let i=0; i<numLink; i++){
 		imageGroup[i].checkMouseClicked();
 	}
